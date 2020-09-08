@@ -1,0 +1,55 @@
+-- Drop table
+
+-- DROP TABLE ems.ems_tbl_employee;
+
+CREATE TABLE ems.ems_tbl_employee (
+	ems_employee_eid bigserial NOT NULL,
+	ems_employee_address varchar(255) NOT NULL,
+	ems_employee_alternate_contactno int4 NOT NULL,
+	ems_employee_assetid varchar(255) NOT NULL,
+	ems_employee_birthdate timestamp NOT NULL,
+	ems_employee_contactno int4 NOT NULL,
+	ems_employee_deskno varchar(255) NOT NULL,
+	ems_employee_emailid varchar(255) NOT NULL,
+	ems_employee_name varchar(255) NOT NULL,
+	ems_is_active bool NOT NULL,
+	ems_is_admin bool NOT NULL,
+	CONSTRAINT ems_tbl_employee_pkey PRIMARY KEY (ems_employee_eid)
+);
+
+-- Permissions
+
+ALTER TABLE ems.ems_tbl_employee OWNER TO postgres;
+GRANT ALL ON TABLE ems.ems_tbl_employee TO postgres;
+
+
+
+
+
+-- Drop table
+
+-- DROP TABLE ems.ems_tbl_dailyactivity;
+
+CREATE TABLE ems.ems_tbl_dailyactivity (
+	ems_dailyactivity_id bigserial NOT NULL,
+	ems_dailyactivity_comments varchar(100) NOT NULL,
+	ems_dailyactivity_activitydesc varchar(500) NOT NULL,
+	ems_dailyactivity_environment varchar(20) NOT NULL,
+	ems_dailyactivity_itemid varchar(15) NOT NULL,
+	ems_dailyactivity_module varchar(50) NOT NULL,
+	ems_dailyactivity_status varchar(10) NOT NULL,
+	ems_dailyactivity_activitysubtype varchar(30) NOT NULL,
+	ems_dailyactivity_activitytype varchar(30) NOT NULL,
+	ems_dailyactivity_work varchar(10) NOT NULL,
+	ems_dailyactivity_actualefforts varchar(2) NOT NULL,
+	ems_employee_eid int8 NULL,
+	CONSTRAINT ems_tbl_dailyactivity_pkey PRIMARY KEY (ems_dailyactivity_id),
+	CONSTRAINT fkoeat2p5d174s8pa3rr9up1tpq FOREIGN KEY (ems_employee_eid) REFERENCES ems.ems_tbl_employee(ems_employee_eid)
+);
+
+-- Permissions
+
+ALTER TABLE ems.ems_tbl_dailyactivity OWNER TO postgres;
+GRANT ALL ON TABLE ems.ems_tbl_dailyactivity TO postgres;
+
+
