@@ -18,11 +18,11 @@ public class EmployeeDailyActivity {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "ems_dailyactivity_id", length = 8, nullable = false)
+	@Column(name = "ems_dailyactivity_activityid")
 	private long activityId;
 	
 	@ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "ems_employee_eid", nullable=false)
+    @JoinColumn(name = "ems_employee_eid")
     private Employee employee;
 	
 	@Column(name = "ems_dailyactivity_activitydesc", length = 500, nullable = false)
@@ -37,7 +37,7 @@ public class EmployeeDailyActivity {
 	@Column(name = "ems_dailyactivity_module", length = 50, nullable = false)
 	private String activityModule;
 	
-	@Column(name = "ems_dailyactivity_environment", length = 10, nullable = false)
+	@Column(name = "ems_dailyactivity_environment", length = 20, nullable = false)
 	private String activityEnvironment;
 	
 	@Column(name = "ems_dailyactivity_itemid", length = 15, nullable = false)

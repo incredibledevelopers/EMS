@@ -3,6 +3,7 @@ package in.co.cognizant.ems.model;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -20,7 +21,7 @@ public class Employee {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "ems_employee_eid", length = 8, nullable = false)
+	@Column(name = "ems_employee_eid")
 	private long employeeId;
 	
 	@Column(name = "ems_employee_name", nullable = false)
@@ -53,7 +54,7 @@ public class Employee {
 	@Column(name = "ems_isActive", nullable = false)
 	private boolean isActive;
 	
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "employee")
+	@OneToMany(mappedBy = "employee")
     private List<EmployeeDailyActivity> employeeDailyActivity;
 
 	public long getEmployeeId() {
@@ -128,19 +129,19 @@ public class Employee {
 		this.birthDate = birthDate;
 	}
 
-	public boolean isAdmin() {
+	public boolean getIsAdmin() {
 		return isAdmin;
 	}
 
-	public void setAdmin(boolean isAdmin) {
+	public void setIsAdmin(boolean isAdmin) {
 		this.isAdmin = isAdmin;
 	}
 
-	public boolean isActive() {
+	public boolean getIsActive() {
 		return isActive;
 	}
 
-	public void setActive(boolean isActive) {
+	public void setIsActive(boolean isActive) {
 		this.isActive = isActive;
 	}
 
